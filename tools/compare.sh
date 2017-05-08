@@ -4,6 +4,12 @@ TMPDIR=/tmp/truffle-tests
 TESTNAME=test1
 TRUFFLE=$1
 
+if [ "$TRUFFLE" == "" ]
+then
+  echo "pass truffle repos file"
+  exit 1
+fi
+
 ethermint version
 geth version
 

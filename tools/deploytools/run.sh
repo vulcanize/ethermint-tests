@@ -37,5 +37,5 @@ if [ "$NETWORK" == "ethereum" ]; then
 else
   echo $NETWORK ${FLAGS[@]}
   $NETWORK ${FLAGS[@]} &
-  echo "personal.listAccounts.forEach(function (a) { personal.unlockAccount(a, ''); });" | geth attach http://localhost:8545 &
+  echo "personal.listAccounts.forEach(function (a) { personal.unlockAccount(a, ''); });" | geth attach http://localhost:8545
 fi
