@@ -24,7 +24,7 @@ PASS=./passwords
 FLAGS=(--datadir $DATADIR \
   --rpc --rpcapi eth,net,web3,personal,miner,admin \
   --rpcaddr 127.0.0.1
-  --unlock $KEYS --password $PASS \
+  #--unlock $KEYS --password $PASS \
 )
 
 if [ "$NETWORK" == "ethereum" ]; then
@@ -37,5 +37,7 @@ if [ "$NETWORK" == "ethereum" ]; then
 else
   echo $NETWORK ${FLAGS[@]}
   $NETWORK ${FLAGS[@]} &
-  echo "personal.listAccounts.forEach(function (a) { personal.unlockAccount(a, ''); });" | geth attach http://localhost:8545
+  sleep 5
+  echo "personal.listAccounts.forEach(function (a) { personal.unlockAccount(a, '', 6000); });" | geth attach http://localhost:8545
+  wait
 fi
