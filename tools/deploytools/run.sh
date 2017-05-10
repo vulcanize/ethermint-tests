@@ -24,7 +24,7 @@ PASS=./passwords
 FLAGS=(--datadir $DATADIR \
   --rpc --rpcapi eth,net,web3,personal,miner,admin \
   --rpcaddr 127.0.0.1
-  #--unlock $KEYS --password $PASS \
+  --unlock $KEYS --password $PASS \
 )
 
 if [ "$NETWORK" == "ethereum" ]; then
