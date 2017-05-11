@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./run.sh $1 ethermint
+./run.sh ethermint $1 $2

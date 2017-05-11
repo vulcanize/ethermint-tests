@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./run.sh $1 ethereum
+./run.sh ethereum $1 $2
