@@ -25,4 +25,4 @@ if [ "$NETWORK" == "ethermint" ]; then
   EXEC=$ETHERMINT
 fi
 
-$EXEC --datadir $TMPFILES init ./ethgen.json
+$EXEC --datadir $TMPFILES init ./ethgen-rpc.json
