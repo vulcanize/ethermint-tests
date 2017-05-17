@@ -17,6 +17,7 @@ geth version
 cd deploytools
 echo "Starting Ethereum"
 ./clean.sh && ./setup-ethereum.sh $TESTNAME && ./run-ethereum.sh $TESTNAME &
+sleep 10
 
 # Run Tests
 cd ..
@@ -31,6 +32,7 @@ killall geth
 cd deploytools
 echo "Starting Ethermint"
 ./clean.sh && ./setup-ethermint.sh $TESTNAME && ./run-ethermint.sh $TESTNAME &
+sleep 10
 
 ## Run Tests
 cd ..
@@ -42,3 +44,5 @@ echo "Running Tests"
 echo "Killing Ethermint"
 killall ethermint
 
+cd deploytools/
+./clean.sh
