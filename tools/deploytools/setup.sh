@@ -4,7 +4,7 @@ source ./vars.sh
 
 NETWORK=$1
 NAME=$2
-TMPFILES="$TMPROOT/$NETWORK-$NAME"
+TMPFILES="/tmp/$TMPROOT/$NETWORK-$NAME"
 
 TENDERMINT=$(which tendermint)
 ETHERMINT=$(which ethermint)
@@ -25,4 +25,4 @@ if [ "$NETWORK" == "ethermint" ]; then
   EXEC=$ETHERMINT
 fi
 
-$EXEC --datadir $TMPFILES init ./ethgen-rpc.json
+$EXEC --datadir $TMPFILES init ./ethgen.json

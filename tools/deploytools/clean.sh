@@ -3,4 +3,4 @@
 source ./vars.sh
 
 echo "removing root directory: $TMPROOT"
-rm -rvf $TMPROOT/*
+rm -rvf /tmp/$TMPROOT/*

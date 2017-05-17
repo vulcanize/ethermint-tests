@@ -8,7 +8,7 @@ NETWORK=$1
 NAME=$2
 PORT=$3
 KEYSTORE=./keystore
-DATADIR="${TMPROOT}/$NETWORK-$NAME"
+DATADIR="/tmp/${TMPROOT}/$NETWORK-$NAME"
 
 if [ "$DATADIR" == "" ]; then
   echo "Provide Datadir"
