@@ -5,6 +5,8 @@ source ./vars.sh
 NETWORK=$1
 NAME=$2
 TMPFILES="/tmp/$TMPROOT/$NETWORK-$NAME"
+NETWORK_DATADIR="$TMPFILES/$NETWORK"
+TENDERMINT_DATADIR="$TMPFILES/tendermint"
 
 TENDERMINT=$(which tendermint)
 ETHERMINT=$(which ethermint)
@@ -13,16 +15,17 @@ EXEC=$(which geth)
 KEYS=$(ls $KEYSTORE)
 
 
-mkdir -p $TMPFILES
-cp -rv keystore/ $TMPFILES/keystore
+mkdir -p $TMPFILES $NETWORK_DATADIR
+cp -rv keystore/ $NETWORK_DATADIR/keystore
 
 if [ "$NETWORK" == "ethermint" ]; then
-  cp -v ./priv_validator.json $TMPFILES
-  cp -v ./genesis.json $TMPFILES
-  cd $TMPFILES
-  $TENDERMINT init
+  mkdir $TENDERMINT_DATADIR
+  cp -v ./priv_validator.json $TENDERMINT_DATADIR
+  cp -v ./genesis.json $TENDERMINT_DATADIR
+  cd $TENDERMINT_DATADIR
+  $TENDERMINT init --home $TENDERMINT_DATADIR
   cd -
   EXEC=$ETHERMINT
 fi
 
-$EXEC --datadir $TMPFILES init ./ethgen.json
+$EXEC --datadir $NETWORK_DATADIR init ./ethgen.json

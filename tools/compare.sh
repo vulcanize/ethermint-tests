@@ -41,8 +41,9 @@ echo "Running Tests"
 
 
 ### Stop Ethermint
-echo "Killing Ethermint"
+echo "Killing Ethermint and tendermint"
 killall ethermint
+killall tendermint
 
 cd deploytools/
 ./clean.sh
