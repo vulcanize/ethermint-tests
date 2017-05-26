@@ -31,7 +31,7 @@ FLAGS=(--datadir $DATADIR/$NETWORK \
   --rpcaddr 127.0.0.1 --rpcport $PORT \
   --ws --wsapi eth,net,web3,personal,miner,admin \
   --wsaddr 127.0.0.1 --wsport 8546 \
-  --unlock $KEYS # --password $PASS \
+  --unlock $KEYS --password $PASS \
 )
 
 if [ "$NETWORK" == "ethereum" ]; then
