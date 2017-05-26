@@ -31,7 +31,7 @@ FLAGS=(--datadir $DATADIR/$NETWORK \
   --rpcaddr 127.0.0.1 --rpcport $PORT \
   --ws --wsapi eth,net,web3,personal,miner,admin \
   --wsaddr 127.0.0.1 --wsport 8546 \
-  --unlock $KEYS --password $PASS \
+  --unlock $KEYS # --password $PASS \
 )
 
 if [ "$NETWORK" == "ethereum" ]; then
@@ -45,9 +45,10 @@ if [ "$NETWORK" == "ethereum" ]; then
   echo "miner.start(1)" | geth attach http://127.0.0.1:$PORT/
   wait
 else
+  echo tendermint node --home $DATADIR/tendermint
   tendermint node --home $DATADIR/tendermint &
+  echo ethermint ${FLAGS[@]}
   ethermint ${FLAGS[@]} &
   sleep 2
-  echo "personal.listAccounts.forEach(function (a) { personal.unlockAccount(a, '', 6000); });" | geth attach http://localhost:8545
   wait
 fi
