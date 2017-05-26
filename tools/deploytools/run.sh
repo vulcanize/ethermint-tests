@@ -36,7 +36,7 @@ FLAGS=(--datadir $DATADIR/$NETWORK \
 
 if [ "$NETWORK" == "ethereum" ]; then
   geth version
-  geth --mine --nodiscover --maxpeers 0 ${FLAGS[@]} &
+  #geth --mine --nodiscover --maxpeers 0 ${FLAGS[@]} &
   #geth --mine --fakepow --nodiscover --maxpeers 0 ${FLAGS[@]} &
 
   geth --fakepow --nodiscover --maxpeers 0 ${FLAGS[@]} &
