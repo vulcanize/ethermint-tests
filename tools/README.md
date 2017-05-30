@@ -3,7 +3,6 @@ Truffle Tests Runner
 
 ## Dependencies
  - Node.JS/NPM
- - truffle
  - ethermint
  - geth
 
