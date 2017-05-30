@@ -42,3 +42,4 @@ echo "Running Tests"
 pkill -INT -P $(pgrep -P $!)
 
 ./deploytools/clean.sh
+rm -rvf $TMPDIR/test-*
