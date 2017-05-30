@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-source ./vars.sh
+DIR=$(dirname ${BASH_SOURCE[0]})
+source $DIR/vars.sh
 
 NETWORK=$1
 NAME=$2

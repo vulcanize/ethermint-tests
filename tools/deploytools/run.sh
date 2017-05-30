@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+shopt -s huponexit
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-source ./vars.sh
+DIR=$(dirname ${BASH_SOURCE[0]})
+source $DIR/vars.sh
 
 NETWORK=$1
 NAME=$2
@@ -36,19 +38,12 @@ FLAGS=(--datadir $DATADIR/$NETWORK \
 
 if [ "$NETWORK" == "ethereum" ]; then
   geth version
-  #geth --mine --nodiscover --maxpeers 0 ${FLAGS[@]} &
-  #geth --mine --fakepow --nodiscover --maxpeers 0 ${FLAGS[@]} &
-
-  geth --fakepow --nodiscover --maxpeers 0 ${FLAGS[@]} &
-  sleep 2
-  echo "Running miner"
-  echo "miner.start(1)" | geth attach http://127.0.0.1:$PORT/
+  geth --mine --fakepow --nodiscover --maxpeers 0 ${FLAGS[@]} &
   wait
 else
   echo tendermint node --home $DATADIR/tendermint
   tendermint node --home $DATADIR/tendermint &
   echo ethermint ${FLAGS[@]}
   ethermint ${FLAGS[@]} &
-  sleep 2
   wait
 fi
