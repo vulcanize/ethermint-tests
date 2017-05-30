@@ -44,7 +44,7 @@ for ((i=0; i < $((${#REPOS[@]})); i=$i+2)); do
     mkdir -p migrations
 
     echo "Run Truffle Tests"
-    TESTS_FILE=$FILEPATH truffle test --mocha.reporter=$SCRIPTDIR/test-reporter.js
+    TESTS_FILE=$FILEPATH $SCRIPTDIR/node_modules/truffle/cli.js test --mocha.reporter=$SCRIPTDIR/test-reporter.js
     echo ',' >> $FILEPATH
   )
 done
